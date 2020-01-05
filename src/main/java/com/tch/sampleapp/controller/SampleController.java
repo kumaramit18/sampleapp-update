@@ -70,8 +70,8 @@ public class SampleController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public UserInfo updateUser(@RequestBody UserInfo userInfo, @PathVariable String id) {
-		return sampleService.updateUser(userInfo,id);
+	public ResponseEntity<UserInfo> updateUser(@RequestBody UserInfo userInfo, @PathVariable String id) {
+		return new ResponseEntity<UserInfo>(sampleService.updateUser(userInfo,id),HttpStatus.ACCEPTED);
 	}
 	
 	@DeleteMapping("/delete/{id}")

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.tch.sampleapp.dao.AddressRepo;
 import com.tch.sampleapp.dao.UserRepo;
+import com.tch.sampleapp.exception.StudentException;
 import com.tch.sampleapp.model.UserInfo;
 
 @Service
@@ -43,7 +44,7 @@ public class SampleService {
 		if(userOpt.isPresent())
 			return userOpt.get();
 		
-		return null;
+		throw new StudentException("The student is unavailable ::"+ id);
 	}
 
 	public List<UserInfo> getAll() {
